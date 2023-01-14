@@ -1,0 +1,12 @@
+#!/usr/bin/ash
+
+build() {
+    add_binary "ntfs-3g"
+    add_runscript
+}
+
+help() {
+    cat <<EOF
+mountntfs=device:mountpoint
+EOF
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/ash
+
+build() {
+    add_runscript
+}
+
+help() {
+    cat <<EOF
+loopfile=filepath
+EOF
+}

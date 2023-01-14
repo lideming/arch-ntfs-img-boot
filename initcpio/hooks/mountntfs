@@ -1,0 +1,16 @@
+#!/usr/bin/ash
+
+run_hook() {
+    if [ -n "$mountntfs" ]; then
+        IFS=: read ntfsdev mountpoint <<EOF
+$mountntfs
+EOF
+        if resolved=$(resolve_device "${ntfsdev}" ${rootdelay}); then
+            mkdir -p "$mountpoint"
+            ( exec -a @mountntfs /usr/bin/ntfs-3g "$resolved" "$mountpoint" -o noatime,lazytime,big_writes ) &
+            sleep 1
+        else
+            echo Device "${ntfsdev}" not found
+        fi
+    fi
+}

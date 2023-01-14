@@ -1,0 +1,7 @@
+#!/usr/bin/ash
+
+run_hook() {
+    if [ -n "$loopfile" ]; then
+        losetup -f $loopfile
+    fi
+}
