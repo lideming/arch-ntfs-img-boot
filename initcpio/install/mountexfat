@@ -1,0 +1,12 @@
+#!/usr/bin/ash
+
+build() {
+    add_module exfat
+    add_runscript
+}
+
+help() {
+    cat <<EOF
+mountexfat=device:mountpoint
+EOF
+}

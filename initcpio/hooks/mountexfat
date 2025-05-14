@@ -1,0 +1,15 @@
+#!/usr/bin/ash
+
+run_hook() {
+    if [ -n "$mountexfat" ]; then
+        IFS=: read fsdev mountpoint <<EOF
+$mountexfat
+EOF
+        if resolved=$(resolve_device "${fsdev}" ${rootdelay}); then
+            mkdir -p "$mountpoint"
+            mount -t exfat "$resolved" "$mountpoint" -o noatime
+        else
+            echo Device "${fsdev}" not found
+        fi
+    fi
+}
