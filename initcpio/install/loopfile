@@ -1,6 +1,7 @@
 #!/usr/bin/ash
 
 build() {
+    add_module loop
     add_runscript
 }
 
